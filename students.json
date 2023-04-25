@@ -1,0 +1,65 @@
+[
+    {
+        "first_name": "Shir",
+        "last_name": "Cohen",
+        "email": "shir@example.com",
+        "courses": [
+            "Automatic and computational",
+            "Web"
+        ],
+        "URL":"https://en.wikipedia.org/wiki/Baking"
+    },
+    {
+        "first_name": "David",
+        "last_name": "Zvonaruv",
+        "email": "david.@example.com",
+        "courses": [
+            "artificial intelligence",
+            "probability"
+        ],
+        "URL":"https://www.off---white.com/en-il/"
+    },
+    {
+        "first_name": "Gal",
+        "last_name": "Farfel",
+        "email": "gal@example.com",
+        "courses": [
+            "Computer Science",
+            "Music"
+        ],
+        "URL":"https://towerrecords.com",
+        "favorite_course": "Data Structures"
+    },
+    {
+        "first_name": "Eldad",
+        "last_name": "Shneor",
+        "email": "elddad@example.com",
+        "courses": [
+            "philosophy",
+            "Data Structures"
+            
+        ],
+        "URL":"https://dictionary.cambridge.org/dictionary/english/genius"
+    },
+    {
+        "first_name": "Yotam",
+        "last_name": "Aharon",
+        "email": "yotam@example.com",
+        "courses": [
+            "Biology",
+            "cloud computing"
+        ],
+        "URL":"https://mhaifafc.com",
+        "favorite_course": "Data Structures"
+    },
+ {
+        "first_name": "Amit",
+        "last_name": "Malca",
+        "email": "amit@example.com",
+        "courses": [
+            "AI",
+            "Web"
+        ],
+        "URL":"https://www.maccabi-tlv.co.il/"
+    }
+]
