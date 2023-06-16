@@ -11,13 +11,14 @@ app = Flask(__name__)
 run_with_ngrok(app)
 app.secret_key = 'your_secret_key'
 
-cred = credentials.Certificate("serviceAccount.json")
-
-# Initialize the app with a service account, granting admin privileges
-firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://cloudclass-44ac5-default-rtdb.europe-west1.firebasedatabase.app'
-})
-
+try:
+    firebase_admin.get_app()
+except ValueError as e:
+    cred = credentials.Certificate("serviceAccount.json")
+    firebase_admin.initialize_app(cred, {
+        'databaseURL': 'https://cloudclass-44ac5-default-rtdb.europe-west1.firebasedatabase.app'
+    })
+    
 DBConnection = backend.Database('https://cloudclass-44ac5-default-rtdb.europe-west1.firebasedatabase.app/')
 
 
