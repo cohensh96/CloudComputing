@@ -45,23 +45,22 @@
             qArr = snapshot.val();
             buttonElements = Array(buttonsPerRow * Math.ceil(qArr.length / buttonsPerRow));
   
-              console.log(typeof qArr);
+              let counter = 0;
+              let orderElements = Object.keys(qArr);
               qArr.forEach((question, index) => {
                   let $button;
-                  if (buttonElements[index]) {
-                      $button = buttonElements[index];
+                  if (buttonElements[counter]) {
+                      $button = buttonElements[counter];
                   } else {
                       $button = document.createElement("button");
-                      buttonElements[index] = $button;
+                      buttonElements[counter] = $button;
                       questionListUI.append($button);
                   }
-  
                   $button.className = "button";
                   $button.style.width="300px";
                   $button.style.height="auto";
-                  $button.innerHTML = index + ". " + question["question"];
                   let stringHTML = "{{url_for('manager')}}";
-                  $button.innerHTML ='<a style="color:white;" href = '+ stringHTML + '/' + index +'>'+ index + ". " + question["question"]+'</a>';
+                  $button.innerHTML ='<a style="color:white;" href = '+ stringHTML + '/' + orderElements[counter] +'>'+ (counter+1) + ". " + question["question"]+'</a>';
                   setTimeout(() => $button.classList.add('visible'), 100);
   
                   if (index >= qArr.length) {
@@ -69,6 +68,7 @@
                   } else {
                       $button.style.visibility = "visible";
                   }
+                  counter++;
               });
           } else {
               console.log("No data available");
@@ -87,28 +87,14 @@
           // FIXED the code appreantly if u delete values from an array it will appear as empty slot.
           // we need to target only defined elements.
           const filtered = qArr.filter((question) =>{
-              return question['question'].toLowerCase().includes($input.value.toLowerCase())
+              return !question['question'].toLowerCase().includes($input.value.toLowerCase())
           })
-          filtered.forEach((question, index) => {
-              if(buttonElements[index] !== undefined) // fix the problem of not filtering
-              {
-                let $button = buttonElements[index];
-                $button.innerHTML = index + ". " + question["question"];
-                let stringHTML = "{{url_for('manager')}}";
-                $button.innerHTML ='<a style="color:white;" href = '+ stringHTML + '/' + index +'>'+ index + ". " + question["question"]+'</a>';
-                setTimeout(() => $button.classList.add('visible'), 100);
-                $button.style.visibility = "visible";
-              }
-          });
-  
-          // Hide unused buttons
-          for (let index = filtered.length; index < buttonElements.length; index++) 
-          {
-              if(buttonElements[index] === undefined)// fix the problem of not filtering
-                continue;
-              let $button = buttonElements[index];
-              $button.style.visibility = "hidden";
-          }
+          let counter2 = 0;
+          qArr.forEach((question) => {
+              let $button = buttonElements[counter2];
+              $button.style.display = (filtered.includes(question)) ? "none" : "block";
+              counter2++;
+          })
       });
   </script>
   <style>
